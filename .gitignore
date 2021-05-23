@@ -2,3 +2,6 @@
 out
 data/notas.dat
 Notas2.iml
+/bin/
+.classpath
+.project
