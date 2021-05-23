@@ -1,0 +1,1 @@
+Archivo vacío para asegurarse de que git crea la carpeta
