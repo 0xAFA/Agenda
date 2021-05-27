@@ -9,37 +9,34 @@ public abstract class Receta implements IReceta{
     private Autor autor;
     private Duracion duracion;
     public List<String> listaIngredientes;
+    String nombre;
+    ArrayList<String> etiquetas = new ArrayList<>();
 
 
     public abstract long calorias();
 
     @Override
+
     public String getNombre() {
-        return null;
+        return nombre;
     }
 
-    @Override
     public void setNombre(String nombre) {
-
+        this.nombre = nombre;
     }
 
-    @Override
     public ArrayList<String> getEtiquetas() {
-        return null;
+        return etiquetas;
     }
 
-    @Override
-    public boolean hasEtiqueta(String etiqueta) {
-        return false;
-    }
+    public boolean hasEtiqueta(String etiqueta) {return etiquetas.contains(etiqueta);}
 
-    @Override
     public void addEtiqueta(String etiqueta) {
-
+        this.etiquetas.add(etiqueta);
     }
 
-    @Override
     public void removeEtiqueta(String etiqueta) {
-
+        this.etiquetas.remove(etiqueta);
     }
+
 }
