@@ -1,4 +1,4 @@
-package main.ui;
+package common.ui;
 
 import javafx.scene.control.Alert;
 

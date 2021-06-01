@@ -1,12 +1,21 @@
 package nota.ui;
 
+import common.ui.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import main.ui.Alertas;
+import common.ui.Alertas;
+import javafx.stage.Stage;
+import nota.repository.INotaManager;
 
 public class NotasController {
+
+    private INotaManager manager;
 
     @FXML
     private Button buttonExit;
@@ -36,6 +45,7 @@ public class NotasController {
 
     @FXML
     void exit(ActionEvent event) {
+        //askToSave();
         System.exit(0);
     }
 
@@ -52,11 +62,20 @@ public class NotasController {
     @FXML
     void returnToMenu(ActionEvent event) {
 
+        // preguntar si se quieren guardar las notas antes de salir
+        //askToSave();
+
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(Scenes.getData().getSceneAgenda());
     }
 
     @FXML
     void saveNotas(ActionEvent event) {
         Alertas.showWarning("Función no implementada.");
+    }
+
+    public void setManager(INotaManager manager) {
+        this.manager = manager;
     }
 
 }

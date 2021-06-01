@@ -1,4 +1,6 @@
 package main.ui;
+import common.ui.Alertas;
+import common.ui.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,8 +9,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import nota.repository.INotaManager;
 
 public class AgendaController {
+
+    private INotaManager notaManager;
+    private Scene sceneNota;
+
+    public Scene getSceneNota() {
+        return sceneNota;
+    }
+
+    public void setSceneNota(Scene sceneNota) {
+        this.sceneNota = sceneNota;
+    }
 
     @FXML
     private Button buttonExit;
@@ -28,6 +42,10 @@ public class AgendaController {
     @FXML
     private Button buttonGoToFlashcards;
 
+    public void setNotaManager(INotaManager manager) {
+        this.notaManager = manager;
+    }
+
     @FXML
     void exit(ActionEvent event) {
         System.exit(0);
@@ -46,17 +64,7 @@ public class AgendaController {
     @FXML
     void goToNotas(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/Notas.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            System.out.println("Error en la carga del archivo FXML.");
-            System.out.println(e);
-            System.exit(1);
-        }
+        stage.setScene(Scenes.getData().getSceneNota());
     }
 
     @FXML
