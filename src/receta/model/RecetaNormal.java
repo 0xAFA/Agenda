@@ -1,17 +1,15 @@
-package receta;
-
-import java.util.ArrayList;
+package receta.model;
 
 public class RecetaNormal extends Receta {
-    private long calorias;
     private String titulo;
 
     public RecetaNormal(long calorias) {
-        this.calorias = calorias;
+        super(calorias);
     }
 
     public long calorias(){
-        return 295304923;
+        calorias= calorias +10;
+        return calorias;
     }
 
     @Override
