@@ -1,12 +1,16 @@
-package receta;
+package receta.model;
 
 public class RecetaDieta extends Receta {
     private String titulo;
+
     public RecetaDieta(long calorias) {
+        super(calorias);
     }
 
+
     public long calorias(){
-        return 29503;
+        calorias= calorias -10;
+        return calorias;
     }
 
     @Override

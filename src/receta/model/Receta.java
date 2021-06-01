@@ -1,4 +1,4 @@
-package receta;
+package receta.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,17 @@ public abstract class Receta implements IReceta{
     public List<String> listaIngredientes;
     String nombre;
     ArrayList<String> etiquetas = new ArrayList<>();
+    protected long calorias;
 
+
+
+    public Receta(long calorias) {
+
+        this.calorias = calorias;
+    }
 
     public abstract long calorias();
+
 
     @Override
 

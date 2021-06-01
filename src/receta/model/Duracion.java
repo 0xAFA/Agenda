@@ -1,4 +1,4 @@
-package receta;
+package receta.model;
 
 public class Duracion {
     private int hh;
