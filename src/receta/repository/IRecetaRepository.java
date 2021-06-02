@@ -4,7 +4,7 @@ import nota.model.INota;
 
 import java.util.ArrayList;
 
-public interface INotaRepository {
+public interface IRecetaRepository {
 
     boolean exists(String nombre);
     boolean create(INota nota);

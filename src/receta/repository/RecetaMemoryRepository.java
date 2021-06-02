@@ -1,18 +1,16 @@
 package receta.repository;
 
-import common.FileMethods;
 import nota.model.INota;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class NotaFileRepository implements INotaRepository {
+public class RecetaMemoryRepository implements IRecetaRepository {
 
     private HashMap<String, INota> repo;
-    private final String path = "data/nota.dat";
 
-    public NotaFileRepository() {
+    public RecetaMemoryRepository() {
         this.repo = new HashMap<>();
     }
 
@@ -24,7 +22,6 @@ public class NotaFileRepository implements INotaRepository {
     @Override
     public boolean create(INota nota) {
         repo.put(nota.getNombre(), nota);
-        FileMethods.writeMapToFile(repo, path);
         return true;
     }
 
@@ -36,20 +33,16 @@ public class NotaFileRepository implements INotaRepository {
     @Override
     public void remove(String nombre) {
         repo.remove(nombre);
-        FileMethods.writeMapToFile(repo, path);
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public ArrayList<INota> readAll() {
-        repo = FileMethods.readMapFromFile(path);
         Collection<INota> values = repo.values(); // pasar los valores de map a arraylist
-        ArrayList<INota> rE = new ArrayList<>(values);
+        ArrayList<INota> rE=new ArrayList<>(values);
         return rE;
     }
 
     public void saveAll() {
-        FileMethods.writeMapToFile(repo, path);
+        System.out.println("El MemoryRepository no tiene funcionalidad de guardar en archivo.");
     }
-
 }
