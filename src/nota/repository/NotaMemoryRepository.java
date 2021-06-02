@@ -41,4 +41,9 @@ public class NotaMemoryRepository implements INotaRepository {
         ArrayList<INota> rE=new ArrayList<>(values);
         return rE;
     }
+
+    @Override
+    public void saveAll() {
+        System.out.println("El MemoryRepository no tiene funcionalidad de guardado en archivo.");
+    }
 }

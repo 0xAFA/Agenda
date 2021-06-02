@@ -48,4 +48,8 @@ public class NotaFileRepository implements INotaRepository {
         return rE;
     }
 
+    public void saveAll() {
+        FileMethods.writeMapToFile(repo, path);
+    }
+
 }

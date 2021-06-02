@@ -34,4 +34,8 @@ public class NotaManager implements INotaManager{
     public ArrayList<INota> readAll(){
         return repo.readAll();
     }
+
+    public void saveAll() {
+        repo.saveAll();
+    }
 }

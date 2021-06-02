@@ -11,6 +11,7 @@ public interface INotaRepository {
     INota read(String nombre);
     void remove(String nombre);
     ArrayList<INota> readAll();
+    void saveAll();
     //INota search(String nombre);
 
 

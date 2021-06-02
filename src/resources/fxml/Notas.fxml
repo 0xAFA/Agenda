@@ -31,7 +31,7 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="280.0" prefWidth="700.0" spacing="50.0">
          <children>
-            <ScrollPane fx:id="panelNotas" prefHeight="238.0" prefWidth="442.0" />
+            <VBox fx:id="panelNotas" prefHeight="238.0" prefWidth="442.0" />
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
                <children>
                   <Button fx:id="buttonAddNota" mnemonicParsing="false" onAction="#addNota" prefHeight="75.0" prefWidth="75.0">

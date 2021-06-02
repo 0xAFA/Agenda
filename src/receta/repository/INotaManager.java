@@ -13,4 +13,6 @@ public interface INotaManager {
     void remove(String titulo);
 
     ArrayList<INota> readAll();
+
+    void saveAll();
 }

@@ -5,22 +5,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.ui.AgendaController;
-import nota.model.Nota;
 import nota.repository.INotaManager;
-import nota.repository.INotaRepository;
 import nota.repository.NotaFileRepository;
 import nota.repository.NotaManager;
-import nota.ui.NotasController;
-
-import java.util.ArrayList;
+import nota.ui.NotaController;
 
 public class MainJavaFX extends Application {
 
     static NotaFileRepository notaRepo;
     static INotaManager notaManager;
-
-    static Scene sceneAgenda;
-    static Scene sceneNota;
 
     public void initAgenda(Stage stage) {
 
@@ -48,7 +41,7 @@ public class MainJavaFX extends Application {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/Notas.fxml"));
-            NotasController controller = new NotasController();
+            NotaController controller = new NotaController();
             controller.setManager(notaManager);
             loader.setController(controller);
             Parent root = loader.load();

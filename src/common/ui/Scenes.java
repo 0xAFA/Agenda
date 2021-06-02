@@ -34,7 +34,6 @@ public class Scenes {
     private INotaManager notaManager;
     // ...
 
-
     // --- Getters y setters ---
 
     public Stage getStage() {
