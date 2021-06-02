@@ -2,6 +2,8 @@ package receta.repository;
 
 import common.FileMethods;
 import nota.model.INota;
+import receta.model.IReceta;
+import receta.model.Receta;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,8 +11,8 @@ import java.util.HashMap;
 
 public class RecetaFileRepository implements IRecetaRepository {
 
-    private HashMap<String, INota> repo;
-    private final String path = "data/nota.dat";
+    private HashMap<String, IReceta> repo;
+    private final String path = "data/receta.dat";
 
     public RecetaFileRepository() {
         this.repo = new HashMap<>();
@@ -22,14 +24,14 @@ public class RecetaFileRepository implements IRecetaRepository {
     }
 
     @Override
-    public boolean create(INota nota) {
-        repo.put(nota.getNombre(), nota);
+    public boolean create(IReceta receta) {
+        repo.put(receta.getNombre(), receta);
         FileMethods.writeMapToFile(repo, path);
         return true;
     }
 
     @Override
-    public INota read(String nombre) {
+    public IReceta read(String nombre) {
         return repo.get(nombre);
     }
 
@@ -41,15 +43,20 @@ public class RecetaFileRepository implements IRecetaRepository {
 
     @Override
     @SuppressWarnings("unchecked")
-    public ArrayList<INota> readAll() {
+    public ArrayList<IReceta> readAll() {
         repo = FileMethods.readMapFromFile(path);
-        Collection<INota> values = repo.values(); // pasar los valores de map a arraylist
-        ArrayList<INota> rE = new ArrayList<>(values);
+        Collection<IReceta> values = repo.values(); // pasar los valores de map a arraylist
+        ArrayList<IReceta> rE = new ArrayList<>(values);
         return rE;
     }
 
+    public String getPropiedades(IReceta receta){
+        return "Dificultad: " + receta.getDificultad();
+    }
     public void saveAll() {
         FileMethods.writeMapToFile(repo, path);
     }
+
+
 
 }

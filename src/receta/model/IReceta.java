@@ -14,4 +14,5 @@ public interface IReceta extends INota {
     long calorias();
 
 
+    String getDificultad();
 }

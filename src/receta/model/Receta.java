@@ -47,4 +47,55 @@ public abstract class Receta implements IReceta{
         this.etiquetas.remove(etiqueta);
     }
 
+    public String getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(String dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Duracion getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Duracion duracion) {
+        this.duracion = duracion;
+    }
+
+    public List<String> getListaIngredientes() {
+        return listaIngredientes;
+    }
+
+    public void setListaIngredientes(List<String> listaIngredientes) {
+        this.listaIngredientes = listaIngredientes;
+    }
+
+    public void setEtiquetas(ArrayList<String> etiquetas) {
+        this.etiquetas = etiquetas;
+    }
+
+    public long getCalorias() {
+        return calorias;
+    }
+
+    public void setCalorias(long calorias) {
+        this.calorias = calorias;
+    }
 }

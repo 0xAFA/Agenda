@@ -1,13 +1,24 @@
 package receta.ui;
 
+import common.ui.Alertas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import nota.model.INota;
+import nota.model.Nota;
+import receta.model.IReceta;
+import receta.model.Receta;
+import receta.model.RecetaNormal;
+import receta.repository.IRecetaManager;
+
+import java.util.HashMap;
+
 
 public class RecetaController {
+    private IRecetaManager manager;
+    private HashMap<String, Button> buttons = new HashMap<>();
 
     @FXML
     private Button buttonExit;
@@ -22,30 +33,31 @@ public class RecetaController {
     private Button buttonRecetaDieta;
 
     @FXML
-    private Button buttonAddNota;
+    private Button buttonAddReceta;
 
     @FXML
-    private Button buttonRemoveNota;
+    private Button buttonRemoveReceta;
 
     @FXML
     private Button buttonReturnToMenu;
 
     @FXML
-    private Button buttonLoadNotas;
+    private Button buttonLoadRecetas;
 
     @FXML
-    private Button buttonSaveNotas;
+    private Button buttonSaveRecetas;
 
-    private void drawNota(INota nota) {
+    private void drawNota(IReceta receta) {
         Button button = new Button();
-        String nombre = nota.getNombre();
-        label.setText(nombre);
-        label.setStyle("-fx-font: 22 System;");
-        labels.put(nombre, label);
-        panelNotas.getChildren().add(label);
+        String nombre = receta.getNombre();
+        button.setText(nombre);
+        button.setStyle("-fx-font: 22 System;");
+        buttons.put(nombre, button);
+        panelNotas.getChildren().add(button);
     }
+
     @FXML
-    void addNota(ActionEvent event) {
+    void addReceta(ActionEvent event) {
 
     }
 
@@ -85,3 +97,4 @@ public class RecetaController {
     }
 
 }
+

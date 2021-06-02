@@ -3,6 +3,12 @@ import nota.repository.INotaManager;
 import nota.repository.INotaRepository;
 import nota.repository.NotaFileRepository;
 import nota.repository.NotaManager;
+import receta.model.Receta;
+import receta.model.RecetaDieta;
+import receta.repository.IRecetaManager;
+import receta.repository.IRecetaRepository;
+import receta.repository.RecetaFileRepository;
+import receta.repository.RecetaManager;
 
 import java.util.ArrayList;
 
@@ -11,28 +17,23 @@ public class Main {
     public static void main (String[] args) {
 
         //INotaRepository repo = new NotaMemoryRepository();
-        INotaRepository repo = new NotaFileRepository();
-        INotaManager manager = new NotaManager(repo);
+        IRecetaRepository repo = new RecetaFileRepository();
+        IRecetaManager manager = new RecetaManager(repo);
 
-        Nota nota1 = new Nota("nota 1");
-        Nota nota2 = new Nota("nota 2");
-        Nota nota3 = new Nota("nota 3");
+        Receta receta1 = new RecetaDieta(30492);
+        receta1.setNombre("Gambas al ajillo");
 
-        manager.create(nota1);
-        manager.create(nota2);
-        manager.create(nota3);
-        manager.remove(nota2);
-        manager.remove("nota 1");
-        manager.remove("nota 4");
+        manager.create(receta1);
 
         //imprimir (temporal)
         System.out.println("---------------------");
-        System.out.println("Notas");
+        System.out.println("Recetas");
         System.out.println("---------------------");
-        ArrayList listaNotas=manager.readAll();
-        for (int i = 0; i < listaNotas.size(); i++){
-            Nota e=(Nota)listaNotas.get(i);
+        ArrayList listaRecetas=manager.readAll();
+        for (int i = 0; i < listaRecetas.size(); i++){
+            Receta e=(Receta)listaRecetas.get(i);
             System.out.println(e.getNombre());
+            System.out.println(manager.getPropiedades(e));
         }
 
     }
