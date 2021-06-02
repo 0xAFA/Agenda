@@ -65,11 +65,11 @@ public class NotaController {
 
     @FXML
     void loadNotas(ActionEvent event) {
-        for (INota nota : manager.readAll()) {
-            if(manager.create(nota)) {
+        ArrayList<INota> notas = manager.readAll();
+        for (INota nota : notas) {
+            if(!labels.containsKey(nota.getNombre()))
                 drawNota(nota);
             }
-        }
     }
 
     private void drawNota(INota nota) {
