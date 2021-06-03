@@ -1,3 +1,7 @@
+import calendario.repository.CalendarioFileRepository;
+import calendario.repository.CalendarioManager;
+import calendario.repository.ICalendarioManager;
+import calendario.ui.CalendarioController;
 import common.ui.Scenes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +21,10 @@ public class MainJavaFX extends Application {
 
     static RecetaFileRepository recetaRepo;
     static IRecetaManager recetaManager;
+    
+    static CalendarioFileRepository calendarioRepo;
+    static ICalendarioManager calendarioManager;
+
 
     public void initAgenda(Stage stage) {
 
@@ -81,6 +89,28 @@ public class MainJavaFX extends Application {
 
         Scenes.getData().setSceneReceta(scene);
     }
+    
+    public void initCalendario(Stage stage) {
+
+        Scene scene = null;
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/Calendario.fxml"));
+            CalendarioController controller = new CalendarioController();
+            controller.setManager(calendarioManager);
+            loader.setController(controller);
+            Parent root = loader.load();
+            scene = new Scene(root);
+            stage.setTitle("Recetas");
+
+        } catch (Exception e) {
+            System.out.println("Error en la carga del archivo FXML.");
+            System.out.println("Mensaje de error: " + e.getMessage());
+            System.exit(1);
+        }
+
+        Scenes.getData().setSceneCalendario(scene);
+    }
 
     private void initRepos() {
 
@@ -90,6 +120,9 @@ public class MainJavaFX extends Application {
 
         recetaRepo = new RecetaFileRepository();
         recetaManager = new RecetaManager(recetaRepo);
+        
+        calendarioRepo = new CalendarioFileRepository();
+        calendarioManager = new CalendarioManager(calendarioRepo);
 
         // ...
     }
@@ -100,6 +133,7 @@ public class MainJavaFX extends Application {
         initAgenda(stage);
         initNotas(stage);
         initRecetas(stage);
+        initCalendario(stage);
         stage.setTitle("Agenda");
         stage.setScene(Scenes.getData().getSceneAgenda());
         stage.show();

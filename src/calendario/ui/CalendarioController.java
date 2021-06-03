@@ -1,5 +1,8 @@
 package calendario.ui;
 
+import java.util.HashMap;
+
+import calendario.repository.ICalendarioManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,8 +10,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import receta.repository.IRecetaManager;
 
 public class CalendarioController {
+	
+	private ICalendarioManager manager;
+    private HashMap<String, Label> labels = new HashMap<>();
 
     @FXML
     private Button botonVolver;
@@ -63,6 +70,10 @@ public class CalendarioController {
     @FXML
     void volver(ActionEvent event) {
 
+    }
+    
+    public void setManager(ICalendarioManager manager) {
+        this.manager = manager;
     }
 
 }

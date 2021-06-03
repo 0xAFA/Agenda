@@ -57,7 +57,7 @@ public class AgendaController {
     @FXML
     void goToCalendario(ActionEvent event) {
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(Scenes.getData().getSceneNota());
+        stage.setScene(Scenes.getData().getSceneCalendario());
     }
 
     @FXML

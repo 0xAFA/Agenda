@@ -1,5 +1,6 @@
 package common.ui;
 
+import calendario.repository.ICalendarioManager;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nota.repository.INotaManager;
@@ -31,11 +32,13 @@ public class Scenes {
     private Scene sceneAgenda;
     private Scene sceneNota;
     private Scene sceneReceta;
+    private Scene sceneCalendario;
     // ...
 
     // Managers
     private INotaManager notaManager;
     private IRecetaManager recetaManager;
+    private ICalendarioManager calendarioManager;
     // ...
 
     // --- Getters y setters ---
@@ -72,6 +75,24 @@ public class Scenes {
         this.notaManager = notaManager;
     }
 
+    
+    
+    public Scene getSceneCalendario() { return sceneCalendario; }
+
+    public void setSceneCalendario(Scene sceneCalendario) {
+        this.sceneCalendario = sceneCalendario;
+    }
+
+    public ICalendarioManager getCalendarioManager() {
+        return calendarioManager;
+    }
+
+    public void setCalendarioManager(ICalendarioManager calendarioManager) {
+        this.calendarioManager = calendarioManager;
+    }
+    
+    
+    
     public Scene getSceneReceta() { return sceneReceta; }
 
     public void setSceneReceta(Scene sceneReceta) {
