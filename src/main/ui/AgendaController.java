@@ -1,11 +1,15 @@
 package main.ui;
+import calendario.ui.CalendarioController;
 import common.ui.Alertas;
 import common.ui.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import nota.repository.INotaManager;
 import receta.repository.IRecetaManager;
@@ -52,12 +56,13 @@ public class AgendaController {
 
     @FXML
     void goToCalendario(ActionEvent event) {
-        Alertas.showWarning("Función no implementada.");
+    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(Scenes.getData().getSceneNota());
     }
 
     @FXML
     void goToFlashcards(ActionEvent event) {
-        Alertas.showWarning("Función no implementada.");
+        Alertas.showWarning("Funcion no implementada.");
     }
 
     @FXML
@@ -74,7 +79,7 @@ public class AgendaController {
 
     @FXML
     void goToTareas(ActionEvent event) {
-        Alertas.showWarning("Función no implementada.");
+        Alertas.showWarning("Funcion no implementada.");
     }
 
 }
