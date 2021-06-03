@@ -1,8 +1,3 @@
-import nota.model.Nota;
-import nota.repository.INotaManager;
-import nota.repository.INotaRepository;
-import nota.repository.NotaFileRepository;
-import nota.repository.NotaManager;
 import receta.model.Receta;
 import receta.model.RecetaDieta;
 import receta.repository.IRecetaManager;
@@ -22,7 +17,7 @@ public class Main {
 
         Receta receta1 = new RecetaDieta(30492);
         receta1.setNombre("Gambas al ajillo");
-
+        receta1.setDificultad("Facil");
         manager.create(receta1);
 
         //imprimir (temporal)
@@ -33,7 +28,7 @@ public class Main {
         for (int i = 0; i < listaRecetas.size(); i++){
             Receta e=(Receta)listaRecetas.get(i);
             System.out.println(e.getNombre());
-            System.out.println(manager.getPropiedades(e));
+            System.out.println(e.getPropiedades());
         }
 
     }

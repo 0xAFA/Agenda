@@ -16,6 +16,4 @@ public interface IRecetaManager {
 
     void saveAll();
 
-    String getPropiedades(IReceta receta);
-
 }

@@ -50,9 +50,6 @@ public class RecetaFileRepository implements IRecetaRepository {
         return rE;
     }
 
-    public String getPropiedades(IReceta receta){
-        return "Dificultad: " + receta.getDificultad();
-    }
     public void saveAll() {
         FileMethods.writeMapToFile(repo, path);
     }

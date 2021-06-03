@@ -47,9 +47,4 @@ public class RecetaMemoryRepository implements IRecetaRepository {
         System.out.println("El MemoryRepository no tiene funcionalidad de guardar en archivo.");
     }
 
-    @Override
-    public String getPropiedades(IReceta receta) {
-        return "Dificultad: " + receta.getDificultad();
-    }
-
 }

@@ -38,7 +38,5 @@ public class RecetaManager implements IRecetaManager {
 
     public void saveAll() {repo.saveAll();}
 
-    public String getPropiedades(IReceta receta) {
-        return repo.getPropiedades(receta);
-    }
+
 }

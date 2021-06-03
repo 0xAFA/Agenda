@@ -8,9 +8,9 @@ public abstract class Receta implements IReceta{
     private String dificultad;
     private Autor autor;
     private Duracion duracion;
-    public List<String> listaIngredientes;
-    String nombre;
-    ArrayList<String> etiquetas = new ArrayList<>();
+    private List<String> listaIngredientes;
+    String nombre; //Viene de INota
+    ArrayList<String> etiquetas = new ArrayList<>(); //Viene de INota
     protected long calorias;
 
 
@@ -97,5 +97,9 @@ public abstract class Receta implements IReceta{
 
     public void setCalorias(long calorias) {
         this.calorias = calorias;
+    }
+
+    public String getPropiedades(){
+        return "Dificultad: " + this.dificultad;
     }
 }

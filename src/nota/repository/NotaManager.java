@@ -4,7 +4,7 @@ import nota.model.INota;
 
 import java.util.ArrayList;
 
-public class NotaManager implements INotaManager{
+public class NotaManager implements INotaManager {
 
     private final INotaRepository repo;
 

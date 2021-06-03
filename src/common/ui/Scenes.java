@@ -3,6 +3,8 @@ package common.ui;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nota.repository.INotaManager;
+import receta.repository.IRecetaManager;
+
 
 /**
  * Clase singleton que contiene referencias a todas las escenas y los Managers correspondientes.
@@ -28,10 +30,12 @@ public class Scenes {
     // Escenas
     private Scene sceneAgenda;
     private Scene sceneNota;
+    private Scene sceneReceta;
     // ...
 
     // Managers
     private INotaManager notaManager;
+    private IRecetaManager recetaManager;
     // ...
 
     // --- Getters y setters ---
@@ -68,4 +72,17 @@ public class Scenes {
         this.notaManager = notaManager;
     }
 
+    public Scene getSceneReceta() { return sceneReceta; }
+
+    public void setSceneReceta(Scene sceneReceta) {
+        this.sceneReceta = sceneReceta;
+    }
+
+    public IRecetaManager getRecetaManager() {
+        return recetaManager;
+    }
+
+    public void setRecetaManager(IRecetaManager recetaManager) {
+        this.recetaManager = recetaManager;
+    }
 }

@@ -15,5 +15,4 @@ public interface IRecetaRepository {
     void saveAll();
 
 
-    String getPropiedades(IReceta receta);
 }
