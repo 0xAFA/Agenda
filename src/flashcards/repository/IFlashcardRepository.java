@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public interface IFlashcardRepository {
 
     boolean exists(String nombre);
-    boolean create(IFlashcard receta);
+    boolean create(IFlashcard flashcard);
     INota read(String nombre);
     void remove(String nombre);
     ArrayList<IFlashcard> readAll();

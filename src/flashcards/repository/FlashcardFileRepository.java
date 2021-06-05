@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class FlashcardFileRepository implements IFlashcardRepository {
     private HashMap<String, IFlashcard> repo;
-    private final String path = "data/receta.dat";
+    private final String path = "data/flashcard.dat";
 
     public FlashcardFileRepository() {
         this.repo = new HashMap<>();
