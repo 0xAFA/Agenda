@@ -1,11 +1,15 @@
 package calendario.ui;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 
+import calendario.model.Calendario;
+import calendario.model.ICalendario;
 import calendario.repository.ICalendarioManager;
+import common.ui.Alertas;
 import common.ui.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import nota.model.INota;
+import nota.model.Nota;
 import receta.repository.IRecetaManager;
 
 public class CalendarioController {
@@ -55,7 +61,14 @@ public class CalendarioController {
 
     @FXML
     void agregar(ActionEvent event) {
-
+    	if(!(texto.getText().equals("")) && !(calendario.getValue() == null)) {
+    		tareas.getItems().add(texto.getText());
+            Calendario cal = new Calendario(texto.getText(), calendario.getValue().toString());
+            manager.create(cal);
+            manager.saveAll();
+            texto.setText("");
+    	}
+    	
     }
 
     @FXML
@@ -87,6 +100,7 @@ public class CalendarioController {
     	}catch(Exception e) {
     		System.out.println("Error");
     	}
+    	loadNotas(fecha);
     }
 
     @FXML
@@ -100,5 +114,17 @@ public class CalendarioController {
     public void setManager(ICalendarioManager manager) {
         this.manager = manager;
     }
+    
+    void loadNotas(String fecha) {
+    	tareas.getItems().clear();
+    	int i;
+        ArrayList<Calendario> cals = manager.readAll();
+        for (Calendario calendario : cals) {
+        	//System.out.println(calendario.getFecha());
+            if(true) {
+                tareas.getItems().add(calendario.getTexto());
+            }
+        }
 
+    }
 }

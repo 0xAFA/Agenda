@@ -2,6 +2,8 @@ package calendario.repository;
 
 
 import java.util.ArrayList;
+
+import calendario.model.Calendario;
 import calendario.model.ICalendario;
 
 
@@ -13,7 +15,7 @@ public class CalendarioManager implements ICalendarioManager {
        this.repo = repo;
     }
 
-    public boolean create(ICalendario receta) {
+    public boolean create(Calendario receta) {
         boolean bRes=false;
         if(!repo.exists(receta.getNombre())){
             repo.create(receta);
@@ -32,11 +34,17 @@ public class CalendarioManager implements ICalendarioManager {
         }
     }
 
-    public ArrayList<ICalendario> readAll(){
+    public ArrayList<Calendario> readAll(){
         return repo.readAll();
     }
 
     public void saveAll() {repo.saveAll();}
+
+	@Override
+	public void remove(Calendario cale) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

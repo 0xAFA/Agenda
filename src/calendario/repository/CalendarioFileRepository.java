@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+import calendario.model.Calendario;
 import calendario.model.ICalendario;
 
 public class CalendarioFileRepository implements ICalendarioRepository {
 
-    private HashMap<String, ICalendario> repo;
+    private HashMap<String, Calendario> repo;
     private final String path = "data/calendario.dat";
 
     public CalendarioFileRepository() {
@@ -23,15 +24,16 @@ public class CalendarioFileRepository implements ICalendarioRepository {
         return repo.containsKey(nombre);
     }
 
-    @Override
-    public boolean create(ICalendario calendario) {
+//    @Override
+	@Override
+    public boolean create(Calendario calendario) {
         repo.put(calendario.getNombre(), calendario);
         FileMethods.writeMapToFile(repo, path);
         return true;
     }
 
     @Override
-    public ICalendario read(String nombre) {
+    public Calendario read(String nombre) {
         return repo.get(nombre);
     }
 
@@ -43,10 +45,10 @@ public class CalendarioFileRepository implements ICalendarioRepository {
 
     @Override
     @SuppressWarnings("unchecked")
-    public ArrayList<ICalendario> readAll() {
+    public ArrayList<Calendario> readAll() {
         repo = FileMethods.readMapFromFile(path);
-        Collection<ICalendario> values = repo.values(); // pasar los valores de map a arraylist
-        ArrayList<ICalendario> rE = new ArrayList<>(values);
+        Collection<Calendario> values = repo.values(); // pasar los valores de map a arraylist
+        ArrayList<Calendario> rE = new ArrayList<Calendario>(values);
         return rE;
     }
 

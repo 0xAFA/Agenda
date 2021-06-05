@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
+import calendario.model.Calendario;
 import calendario.model.ICalendario;
 
 public class CalendarioMemoryRepository implements ICalendarioRepository {
 
-    private HashMap<String, ICalendario> repo;
+    private HashMap<String, Calendario> repo;
 
     public CalendarioMemoryRepository() {
         this.repo = new HashMap<>();
@@ -22,7 +23,7 @@ public class CalendarioMemoryRepository implements ICalendarioRepository {
     }
 
     @Override
-    public boolean create(ICalendario receta) {
+    public boolean create(Calendario receta) {
         repo.put(receta.getNombre(), receta);
         return true;
     }
@@ -38,9 +39,9 @@ public class CalendarioMemoryRepository implements ICalendarioRepository {
     }
 
     @Override
-    public ArrayList<ICalendario> readAll() {
-        Collection<ICalendario> values = repo.values(); // pasar los valores de map a arraylist
-        ArrayList<ICalendario> rE=new ArrayList<>(values);
+    public ArrayList<Calendario> readAll() {
+        Collection<Calendario> values = repo.values(); // pasar los valores de map a arraylist
+        ArrayList<Calendario> rE=new ArrayList<>(values);
         return rE;
     }
 
