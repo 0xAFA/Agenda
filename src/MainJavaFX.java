@@ -93,6 +93,7 @@ public class MainJavaFX extends Application {
             Parent root = loader.load();
             scene = new Scene(root);
             stage.setTitle("Notas");
+            controller.loadNotas();
 
         } catch (Exception e) {
             System.out.println("Error en la carga del archivo FXML.");

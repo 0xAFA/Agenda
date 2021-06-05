@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import common.ui.Alertas;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -27,11 +28,8 @@ public class NotaController {
     // Elementos gráficos
 
     @FXML
-    private Button buttonExit;
-
-    @FXML
-    private VBox panelNotas;
-
+    private ListView<String> panelNotas;
+    
     @FXML
     private Button buttonAddNota;
 
@@ -41,11 +39,11 @@ public class NotaController {
     @FXML
     private Button buttonReturnToMenu;
 
-    @FXML
-    private Button buttonLoadNotas;
+//    @FXML
+//    private Button buttonLoadNotas;
 
-    @FXML
-    private Button buttonSaveNotas;
+//    @FXML
+//    private Button buttonSaveNotas;
 
     /**
      * Añade una nota al Manager.
@@ -82,8 +80,9 @@ public class NotaController {
      * Lee las notas contenidas en el archivo..
      * @param event
      */
-    @FXML
-    void loadNotas(ActionEvent event) {
+   // @FXML
+    public void loadNotas(/*ActionEvent event*/) {
+    	panelNotas.getItems().clear();
         ArrayList<INota> notas = manager.readAll();
         for (INota nota : notas) {
             if(!labels.containsKey(nota.getNombre()))
@@ -96,12 +95,12 @@ public class NotaController {
      * @param nota Nota que se va a dibujar.
      */
     private void drawNota(INota nota) {
-        Label label = new Label();
-        String nombre = nota.getNombre();
-        label.setText(nombre);
-        label.setStyle("-fx-font: 22 System;");
-        labels.put(nombre, label);
-        panelNotas.getChildren().add(label);
+//        Label label = new Label();
+//        String nombre = nota.getNombre();
+//        label.setText(nombre);
+//        label.setStyle("-fx-font: 22 System;");
+//        labels.put(nombre, label);
+        panelNotas.getItems().add(nota.getNombre());
     }
 
     /**
@@ -109,7 +108,9 @@ public class NotaController {
      * @param name Nombre de la nota.
      */
     private void eraseNota(String name) {
-        panelNotas.getChildren().remove(labels.get(name));
+        panelNotas.getItems().remove(labels.get(name));
+        loadNotas();
+        
     }
 
     /**
@@ -129,11 +130,6 @@ public class NotaController {
      * Cierra la aplicación, solicitando antes al usuario si desea guardar las notas.
      * @param event
      */
-    @FXML
-    void exit(ActionEvent event) {
-        askToSave();
-        System.exit(0);
-    }
 
     /**
      * Guarda las notas en un archivo.

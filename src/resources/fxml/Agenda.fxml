@@ -45,26 +45,6 @@
                      </font>
                   </Button>
                </bottom>
-               <top>
-                  <Label fx:id="labelDia" textFill="#2f375b" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets top="50.0" />
-                     </BorderPane.margin>
-                     <font>
-                        <Font size="64.0" />
-                     </font>
-                  </Label>
-               </top>
-               <center>
-                  <Label fx:id="labelSemana" textFill="#2f375b" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets bottom="75.0" />
-                     </BorderPane.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <center>
