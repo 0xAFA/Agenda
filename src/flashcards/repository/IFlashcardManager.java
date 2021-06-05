@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public interface IFlashcardManager {
 
-    boolean create(IFlashcard nota);
+    boolean create(IFlashcard flashcard);
 
-    void remove(IFlashcard nota);
+    void remove(IFlashcard flashcard);
 
     void remove(String titulo);
 

@@ -3,6 +3,10 @@ import calendario.repository.CalendarioManager;
 import calendario.repository.ICalendarioManager;
 import calendario.ui.CalendarioController;
 import common.ui.Scenes;
+import flashcards.repository.FlashcardFileRepository;
+import flashcards.repository.FlashcardManager;
+import flashcards.repository.IFlashcardManager;
+import flashcards.ui.FlashcardController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +31,9 @@ public class MainJavaFX extends Application {
     
     static CalendarioFileRepository calendarioRepo;
     static ICalendarioManager calendarioManager;
+
+    static FlashcardFileRepository flashcardRepo;
+    static IFlashcardManager flashcardManager;
 
     /**
      * Punto de inicio de la aplicación, que llama a los inicializadores de las distintas escenas
@@ -147,6 +154,7 @@ public class MainJavaFX extends Application {
         Scenes.getData().setSceneCalendario(scene);
     }
 
+
     /**
      * Inicializa los Managers y repositorios.
      */
@@ -161,6 +169,9 @@ public class MainJavaFX extends Application {
         
         calendarioRepo = new CalendarioFileRepository();
         calendarioManager = new CalendarioManager(calendarioRepo);
+
+        flashcardRepo = new FlashcardFileRepository();
+        flashcardManager = new FlashcardManager(flashcardRepo);
 
         // ...
     }

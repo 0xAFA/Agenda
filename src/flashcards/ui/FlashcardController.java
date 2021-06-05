@@ -26,7 +26,7 @@ public class FlashcardController {
     private Button buttonExit;
 
     @FXML
-    private VBox panelFlashcards;
+    private VBox panelFlashcard;
 
     @FXML
     private Button buttonAddFlashcard;
@@ -41,15 +41,13 @@ public class FlashcardController {
     private Button buttonLoadFlashcard;
 
     @FXML
-    private Button buttonSaveFlashcards;
+    private Button buttonSaveFlashcard;
     @FXML
     void addFlashcard(ActionEvent event) {
 
-        String nombre = Alertas.showInputDialog("Introduce la flashcard:", "Introducir flashcard", "");
-        Flashcards flashcard = new Flashcards("Definicion de átomo",new Asignatura("Fisica"));
+        String nombre = Alertas.showInputDialog("Introduce el titulo de la flashcard:", "Crear flashcard", "");
+        Flashcards flashcard = new Flashcards(nombre);
         flashcard.setNombre(nombre);
-        flashcard.setContenido("El átomo es la unidad constituyente más pequeña de la " +
-                               "materia que tiene las propiedades de un elemento químico.");
         if(manager.create(flashcard)) {
             drawFlashcard(flashcard);
         }
@@ -63,12 +61,12 @@ public class FlashcardController {
 
     private void askToSave() {
         if(Alertas.showYesNoDialog("¿Desea guardar las flashcards?", "Guardar flashcards")) {
-            saveFlashcards(new ActionEvent());
+            saveFlashcard(new ActionEvent());
         }
     }
 
     @FXML
-    void loadRecetas(ActionEvent event) {
+    void loadFlashcard(ActionEvent event) {
         ArrayList<IFlashcard> flashcards = manager.readAll();
         for (IFlashcard flashcard  : flashcards) {
             if(!labels.containsKey(flashcard.getNombre()))
@@ -82,11 +80,11 @@ public class FlashcardController {
         label.setText(nombre);
         label.setStyle("-fx-font: 22 System;");
         labels.put(nombre, label);
-        panelFlashcards.getChildren().add(label);
+        panelFlashcard.getChildren().add(label);
     }
 
-    private void eraseReceta(String name) {
-        panelFlashcards.getChildren().remove(labels.get(name));
+    private void eraseFlashcard(String name) {
+        panelFlashcard.getChildren().remove(labels.get(name));
     }
 
     @FXML
@@ -101,7 +99,7 @@ public class FlashcardController {
                                                              "Eliminar flashcard");
 
         manager.remove(nombre);
-        eraseReceta(nombre);
+        eraseFlashcard(nombre);
     }
 
     @FXML
@@ -114,7 +112,7 @@ public class FlashcardController {
     }
 
     @FXML
-    void saveFlashcards(ActionEvent event) {
+    void saveFlashcard(ActionEvent event) {
         manager.saveAll();
     }
 
