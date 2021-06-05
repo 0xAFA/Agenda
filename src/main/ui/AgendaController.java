@@ -58,9 +58,9 @@ public class AgendaController {
      */
     @FXML
     void goToFlashcards(ActionEvent event) {
-        Alertas.showWarning("Funcion no implementada.");
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(Scenes.getData().getSceneFlashcard());
     }
-
     /**
      * Ir a la aplicación Notas.
      * @param event

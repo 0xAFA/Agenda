@@ -1,6 +1,7 @@
 package common.ui;
 
 import calendario.repository.ICalendarioManager;
+import flashcards.repository.IFlashcardManager;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nota.repository.INotaManager;
@@ -33,12 +34,14 @@ public class Scenes {
     private Scene sceneNota;
     private Scene sceneReceta;
     private Scene sceneCalendario;
+    private Scene sceneFlashcard;
     // ...
 
     // Managers
     private INotaManager notaManager;
     private IRecetaManager recetaManager;
     private ICalendarioManager calendarioManager;
+    private IFlashcardManager flashcardManager;
     // ...
 
     // --- Getters y setters ---
@@ -104,5 +107,23 @@ public class Scenes {
 
     public void setRecetaManager(IRecetaManager recetaManager) {
         this.recetaManager = recetaManager;
+    }
+
+
+
+    public Scene getSceneFlashcard() {
+        return sceneFlashcard;
+    }
+
+    public void setSceneFlashcard(Scene sceneFlashcard) {
+        this.sceneFlashcard = sceneFlashcard;
+    }
+
+    public IFlashcardManager getFlashcardManager() {
+        return flashcardManager;
+    }
+
+    public void setFlashcardManager(IFlashcardManager flashcardManager) {
+        this.flashcardManager = flashcardManager;
     }
 }

@@ -47,6 +47,7 @@ public class MainJavaFX extends Application {
         initNotas(stage);
         initRecetas(stage);
         initCalendario(stage);
+        initFlashcard(stage);
         stage.setTitle("Agenda");
         stage.setScene(Scenes.getData().getSceneAgenda());
         stage.show();
@@ -153,7 +154,31 @@ public class MainJavaFX extends Application {
 
         Scenes.getData().setSceneCalendario(scene);
     }
+    /**
+     * Inicializa la aplicación Flashcards.
+     * @param stage Escenario JavaFX.
+     */
+    public void initFlashcard(Stage stage) {
 
+        Scene scene = null;
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/fxml/Flashcard.fxml"));
+            FlashcardController controller = new FlashcardController();
+            controller.setManager(flashcardManager);
+            loader.setController(controller);
+            Parent root = loader.load();
+            scene = new Scene(root);
+            stage.setTitle("Flashcards");
+
+        } catch (Exception e) {
+            System.out.println("Error en la carga del archivo FXML.");
+            System.out.println("Mensaje de error: " + e.getMessage());
+            System.exit(1);
+        }
+
+        Scenes.getData().setSceneFlashcard(scene);
+    }
 
     /**
      * Inicializa los Managers y repositorios.
