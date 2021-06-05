@@ -9,6 +9,7 @@ public class Calendario implements ICalendario{
 	
 	private String texto;
 	private String fecha;
+	private String nombre;
 	
 	public String getTexto() {
 		return texto;
@@ -34,13 +35,13 @@ public class Calendario implements ICalendario{
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	@Override
 	public void setNombre(String nombre) {
 		// TODO Auto-generated method stub
-		
+		this.nombre = nombre;
 	}
 
 	@Override

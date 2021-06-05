@@ -61,24 +61,62 @@ public class CalendarioController {
 
     @FXML
     void agregar(ActionEvent event) {
+    	
     	if(!(texto.getText().equals("")) && !(calendario.getValue() == null)) {
     		tareas.getItems().add(texto.getText());
             Calendario cal = new Calendario(texto.getText(), calendario.getValue().toString());
+            cal.setNombre(texto.getText());
             manager.create(cal);
             manager.saveAll();
             texto.setText("");
+            labelError.setText("");
+    	}
+    	
+    	else {
+    		labelError.setText("Seleccione una fecha y escriba un evento");
     	}
     	
     }
 
     @FXML
     void borrar(ActionEvent event) {
-
+    	labelError.setText("");
+    	String tarea = tareas.getSelectionModel().getSelectedItem();
+    	if(tarea == null) {
+    		labelError.setText("Seleccione un evento de la lista");
+    	}
+    	else {
+	    	ArrayList<Calendario> cals = manager.readAll();
+	    	for (Calendario calendario : cals) {
+	    		if(calendario.getNombre().equals(tarea)) {
+	    			manager.remove(tarea);
+	    			manager.saveAll();
+	    		}
+	    	}
+	    	loadNotas();
+    	}
     }
 
     @FXML
     void editar(ActionEvent event) {
-
+    	labelError.setText("");
+    	String tarea = tareas.getSelectionModel().getSelectedItem();
+    	if(tarea == null) {
+    		labelError.setText("Seleccione un evento de la lista");
+    	}
+    	else {
+	    	ArrayList<Calendario> cals = manager.readAll();
+	    	for (Calendario calendario : cals) {
+	    		if(calendario.getNombre().equals(tarea)) {
+	    			manager.remove(tarea);
+	    			manager.saveAll();
+	    		}
+	    	}
+	    	loadNotas();
+	    	labelError.setText("");;
+	    	texto.setText(tarea);
+    	}
+    	
     }
 
     @FXML
@@ -100,7 +138,7 @@ public class CalendarioController {
     	}catch(Exception e) {
     		System.out.println("Error");
     	}
-    	loadNotas(fecha);
+    	loadNotas();
     }
 
     @FXML
@@ -115,16 +153,28 @@ public class CalendarioController {
         this.manager = manager;
     }
     
-    void loadNotas(String fecha) {
+    void loadNotas() {
     	tareas.getItems().clear();
+    	labelError.setText("");
+    	boolean encontrado = false;
     	int i;
         ArrayList<Calendario> cals = manager.readAll();
         for (Calendario calendario : cals) {
         	//System.out.println(calendario.getFecha());
-            if(true) {
+//        	System.out.println(calendario.getFecha());
+//        	System.out.println(calendario.getTexto());
+//        	System.out.println(calendario.getNombre());
+        	//manager.remove("A");
+            if(calendario.getFecha().equals(this.calendario.getValue().toString())) {
                 tareas.getItems().add(calendario.getTexto());
+                encontrado = true;
             }
+            //manager.saveAll();
         }
+        if(encontrado == false) {
+        	labelError.setText("No hay eventos para esta fecha");
+        }
+       
 
     }
 }
