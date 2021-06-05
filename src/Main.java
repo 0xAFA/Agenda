@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 public class Main {
 
+    /**
+     * Aplicación de consola, utilizada sólo para pruebas.
+     * @param args
+     */
     public static void main (String[] args) {
 
         //INotaRepository repo = new NotaMemoryRepository();

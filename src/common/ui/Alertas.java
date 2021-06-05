@@ -6,11 +6,15 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 /**
- * Clase que contiene varios diálogos y alertas.
+ * Clase que contiene varios cuadros de diálogo y alertas.
  * Código adaptado de https://code.makery.ch/blog/javafx-dialogs-official/ por Marco Jakob.
  */
 public class Alertas {
 
+    /**
+     * Muestra un mensaje con un símbolo de advertencia.
+     * @param mensaje Mensaje.
+     */
     public static void showWarning (String mensaje) {
 
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -22,6 +26,10 @@ public class Alertas {
 
     }
 
+    /**
+     * Muestra un mensaje con un símbolo de error.
+     * @param mensaje Mensaje.
+     */
     public static void showError (String mensaje) {
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -33,6 +41,13 @@ public class Alertas {
 
     }
 
+    /**
+     * Pide al usuario que introduzca un texto.
+     * @param mensaje Mensaje a mostrar.
+     * @param titulo Título del cuadro de diálogo.
+     * @param textoPorDefecto Texto mostrado por defecto.
+     * @return Texto introducido por el usuario.
+     */
     public static String showInputDialog (String mensaje, String titulo, String textoPorDefecto) {
         TextInputDialog dialog = new TextInputDialog(textoPorDefecto);
         String sRet = "";
@@ -48,6 +63,13 @@ public class Alertas {
         return sRet;
     }
 
+    /**
+     * Muestra un diálogo que permite al usuario elegir entre varias opciones.
+     * @param opciones Opciones que damos al usuario.
+     * @param mensaje Mensaje mostrado.
+     * @param titulo Título del cuadro de diálogo.
+     * @return Opción elegida.
+     */
     public static String showChoiceDialog (ArrayList<String> opciones, String mensaje, String titulo) {
         String sRet = "";
 
@@ -64,6 +86,12 @@ public class Alertas {
         return sRet;
     }
 
+    /**
+     * Diálogo que permite al usuario elegir entre dos opciones.
+     * @param mensaje Mensaje a mostrar.
+     * @param titulo Título del cuadro de diálogo.
+     * @return Opción elegida.
+     */
     public static boolean showYesNoDialog (String mensaje, String titulo){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         boolean bRet = false;

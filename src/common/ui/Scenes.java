@@ -76,7 +76,6 @@ public class Scenes {
     }
 
     
-    
     public Scene getSceneCalendario() { return sceneCalendario; }
 
     public void setSceneCalendario(Scene sceneCalendario) {

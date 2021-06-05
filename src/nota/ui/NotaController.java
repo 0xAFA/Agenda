@@ -16,10 +16,15 @@ import nota.repository.INotaManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Controlador de la interfaz gráfica de la aplicación de notas.
+ */
 public class NotaController {
 
     private INotaManager manager;
     private HashMap<String, Label> labels = new HashMap<>();
+
+    // Elementos gráficos
 
     @FXML
     private Button buttonExit;
@@ -42,6 +47,10 @@ public class NotaController {
     @FXML
     private Button buttonSaveNotas;
 
+    /**
+     * Añade una nota al Manager.
+     * @param event
+     */
     @FXML
     void addNota(ActionEvent event) {
         String nombre = Alertas.showInputDialog("Introduce la nota:", "Introducir nota", "");
@@ -51,40 +60,10 @@ public class NotaController {
         }
     }
 
-    @FXML
-    void exit(ActionEvent event) {
-        askToSave();
-        System.exit(0);
-    }
-
-    private void askToSave() {
-        if(Alertas.showYesNoDialog("¿Desea guardar las notas?", "Guardar notas")) {
-            saveNotas(new ActionEvent());
-        }
-    }
-
-    @FXML
-    void loadNotas(ActionEvent event) {
-        ArrayList<INota> notas = manager.readAll();
-        for (INota nota : notas) {
-            if(!labels.containsKey(nota.getNombre()))
-                drawNota(nota);
-            }
-    }
-
-    private void drawNota(INota nota) {
-        Label label = new Label();
-        String nombre = nota.getNombre();
-        label.setText(nombre);
-        label.setStyle("-fx-font: 22 System;");
-        labels.put(nombre, label);
-        panelNotas.getChildren().add(label);
-    }
-
-    private void eraseNota(String name) {
-        panelNotas.getChildren().remove(labels.get(name));
-    }
-
+    /**
+     * Permite al usuario seleccionar una nota para eliminar de la aplicación.
+     * @param event
+     */
     @FXML
     void removeNota(ActionEvent event) {
         ArrayList<String> allNotes = new ArrayList<>();
@@ -99,6 +78,44 @@ public class NotaController {
         eraseNota(nombre);
     }
 
+    /**
+     * Lee las notas contenidas en el archivo..
+     * @param event
+     */
+    @FXML
+    void loadNotas(ActionEvent event) {
+        ArrayList<INota> notas = manager.readAll();
+        for (INota nota : notas) {
+            if(!labels.containsKey(nota.getNombre()))
+                drawNota(nota);
+            }
+    }
+
+    /**
+     * Dibuja las notas en pantalla.
+     * @param nota Nota que se va a dibujar.
+     */
+    private void drawNota(INota nota) {
+        Label label = new Label();
+        String nombre = nota.getNombre();
+        label.setText(nombre);
+        label.setStyle("-fx-font: 22 System;");
+        labels.put(nombre, label);
+        panelNotas.getChildren().add(label);
+    }
+
+    /**
+     * Borra una nota de la pantalla.
+     * @param name Nombre de la nota.
+     */
+    private void eraseNota(String name) {
+        panelNotas.getChildren().remove(labels.get(name));
+    }
+
+    /**
+     * Vuelve al menú principal, preguntando antes al usuario si desea guardar las notas.
+     * @param event
+     */
     @FXML
     void returnToMenu(ActionEvent event) {
 
@@ -108,11 +125,40 @@ public class NotaController {
         stage.setScene(Scenes.getData().getSceneAgenda());
     }
 
+    /**
+     * Cierra la aplicación, solicitando antes al usuario si desea guardar las notas.
+     * @param event
+     */
+    @FXML
+    void exit(ActionEvent event) {
+        askToSave();
+        System.exit(0);
+    }
+
+    /**
+     * Guarda las notas en un archivo.
+     * @param event
+     */
+
+
+    /**
+     * Pregunta al usuario si quiere guardar las notas antes de salir.
+     */
+    private void askToSave() {
+        if(Alertas.showYesNoDialog("¿Desea guardar las notas?", "Guardar notas")) {
+            saveNotas(new ActionEvent());
+        }
+    }
+
     @FXML
     void saveNotas(ActionEvent event) {
         manager.saveAll();
     }
 
+    /**
+     * Asigna un NotaManager a la aplicación.
+     * @param manager NotaManager.
+     */
     public void setManager(INotaManager manager) {
         this.manager = manager;
     }

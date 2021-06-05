@@ -14,6 +14,9 @@ import receta.repository.*;
 import nota.ui.NotaController;
 import receta.ui.RecetaController;
 
+/**
+ * Punto de inicio de la aplicación.
+ */
 public class MainJavaFX extends Application {
 
     static NotaFileRepository notaRepo;
@@ -25,7 +28,27 @@ public class MainJavaFX extends Application {
     static CalendarioFileRepository calendarioRepo;
     static ICalendarioManager calendarioManager;
 
+    /**
+     * Punto de inicio de la aplicación, que llama a los inicializadores de las distintas escenas
+     * y coloca el menú principal como escena activa.
+     * @param stage Escenario JavaFX.
+     */
+    @Override
+    public void start(Stage stage) {
+        initRepos();
+        initAgenda(stage);
+        initNotas(stage);
+        initRecetas(stage);
+        initCalendario(stage);
+        stage.setTitle("Agenda");
+        stage.setScene(Scenes.getData().getSceneAgenda());
+        stage.show();
+    }
 
+    /**
+     * Inicializa la aplicación Agenda.
+     * @param stage Escenario JavaFX.
+     */
     public void initAgenda(Stage stage) {
 
         Scene scene = null;
@@ -46,6 +69,10 @@ public class MainJavaFX extends Application {
         Scenes.getData().setSceneAgenda(scene);
     }
 
+    /**
+     * Inicializa la aplicación Notas.
+     * @param stage Escenario JavaFX.
+     */
     public void initNotas(Stage stage) {
 
         Scene scene = null;
@@ -68,6 +95,10 @@ public class MainJavaFX extends Application {
         Scenes.getData().setSceneNota(scene);
     }
 
+    /**
+     * Inicializa la aplicación Recetas.
+     * @param stage Escenario JavaFX.
+     */
     public void initRecetas(Stage stage) {
 
         Scene scene = null;
@@ -89,7 +120,11 @@ public class MainJavaFX extends Application {
 
         Scenes.getData().setSceneReceta(scene);
     }
-    
+
+    /**
+     * Inicializa la aplicación Calendario.
+     * @param stage Escenario JavaFX.
+     */
     public void initCalendario(Stage stage) {
 
         Scene scene = null;
@@ -112,6 +147,9 @@ public class MainJavaFX extends Application {
         Scenes.getData().setSceneCalendario(scene);
     }
 
+    /**
+     * Inicializa los Managers y repositorios.
+     */
     private void initRepos() {
 
         // Inicializar todos los repositorios
@@ -125,18 +163,6 @@ public class MainJavaFX extends Application {
         calendarioManager = new CalendarioManager(calendarioRepo);
 
         // ...
-    }
-
-    @Override
-    public void start(Stage stage) {
-        initRepos();
-        initAgenda(stage);
-        initNotas(stage);
-        initRecetas(stage);
-        initCalendario(stage);
-        stage.setTitle("Agenda");
-        stage.setScene(Scenes.getData().getSceneAgenda());
-        stage.show();
     }
 
     public static void main(String[] args) {

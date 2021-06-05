@@ -1,31 +1,19 @@
 package main.ui;
-import calendario.ui.CalendarioController;
+
 import common.ui.Alertas;
 import common.ui.Scenes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import nota.repository.INotaManager;
-import receta.repository.IRecetaManager;
 
+/**
+ * Controlador del menú principal del programa.
+ */
 public class AgendaController {
 
-    private INotaManager notaManager;
-    private Scene sceneNota;
-
-    public Scene getSceneNota() {
-        return sceneNota;
-    }
-
-    public void setSceneNota(Scene sceneNota) {
-        this.sceneNota = sceneNota;
-    }
+    // Elementos gráficos
 
     @FXML
     private Button buttonExit;
@@ -45,38 +33,58 @@ public class AgendaController {
     @FXML
     private Button buttonGoToFlashcards;
 
-    public void setNotaManager(INotaManager manager) {
-        this.notaManager = manager;
-    }
-
+    /**
+     * Salir de la aplicación.
+     * @param event
+     */
     @FXML
     void exit(ActionEvent event) {
         System.exit(0);
     }
 
+    /**
+     * Ir a la aplicación Calendario.
+     * @param event
+     */
     @FXML
     void goToCalendario(ActionEvent event) {
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(Scenes.getData().getSceneCalendario());
     }
 
+    /**
+     * Ir a la aplicación Flashcards.
+     * @param event
+     */
     @FXML
     void goToFlashcards(ActionEvent event) {
         Alertas.showWarning("Funcion no implementada.");
     }
 
+    /**
+     * Ir a la aplicación Notas.
+     * @param event
+     */
     @FXML
     void goToNotas(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(Scenes.getData().getSceneNota());
     }
 
+    /**
+     * Ir a la aplicación Recetas.
+     * @param event
+     */
     @FXML
     void goToRecetas(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(Scenes.getData().getSceneReceta());
     }
 
+    /**
+     * Ir a la aplicación Tareas.
+     * @param event
+     */
     @FXML
     void goToTareas(ActionEvent event) {
         Alertas.showWarning("Funcion no implementada.");

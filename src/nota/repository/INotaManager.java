@@ -4,6 +4,9 @@ import nota.model.INota;
 
 import java.util.ArrayList;
 
+/**
+ * Interfaz para los managers de notas.
+ */
 public interface INotaManager {
 
     boolean create(INota nota);

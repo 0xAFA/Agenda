@@ -3,6 +3,9 @@ package nota.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Interfaz para las implementaciones de la clase Nota.
+ */
 public interface INota extends Serializable {
 
     String getNombre();
