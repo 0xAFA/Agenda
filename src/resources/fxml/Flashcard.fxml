@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.geometry.Insets?>
-        <?import javafx.scene.control.Button?>
-        <?import javafx.scene.control.Label?>
-        <?import javafx.scene.control.ListView?>
-        <?import javafx.scene.layout.AnchorPane?>
-        <?import javafx.scene.layout.BorderPane?>
-        <?import javafx.scene.layout.ColumnConstraints?>
-        <?import javafx.scene.layout.GridPane?>
-        <?import javafx.scene.layout.RowConstraints?>
-        <?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="250.0" layoutY="205.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -58,7 +52,7 @@
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <left>
-                  <Button fx:id="buttonFlashcard" maxHeight="25.0" maxWidth="75.0" mnemonicParsing="false" onAction="#addFlashcard" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #2f375b;" text="Agregar" textFill="WHITE" BorderPane.alignment="CENTER">
+                  <Button fx:id="buttonFlashcard" maxHeight="25.0" maxWidth="75.0" mnemonicParsing="false" onAction="#addFlashcard" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #2f375b;" text="Agregar" textFill="WHITE" BorderPane.alignment="CENTER_RIGHT">
                      <BorderPane.margin>
                         <Insets left="100.0" top="50.0" />
                      </BorderPane.margin>
@@ -66,7 +60,15 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-               </left>
+               </left><center>
+               <Button fx:id="buttonLoadFlashcard" maxHeight="25.0" maxWidth="75.0" mnemonicParsing="false" onAction="#loadFlashcard" prefHeight="25.0" style="-fx-background-color: #2f375b;" text="Cargar" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                     <BorderPane.margin>
+                        <Insets top="50.0" />
+                     </BorderPane.margin></Button>
+            </center>
                <right>
                   <Button fx:id="buttonRemoveFlashcard" maxHeight="25.0" maxWidth="75.0" mnemonicParsing="false" onAction="#removeFlashcard" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #2f375b;" text="Borrar" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
