@@ -98,6 +98,18 @@ public class FlashcardController {
         panelFlashcard.getItems().add(flashcard.getNombre());
     }
 
+    public void makePanelClickable() {
+        panelFlashcard.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                String nombreFlashcard = panelFlashcard.getSelectionModel().getSelectedItem();
+                String contenidoFlashcard = manager.read(nombreFlashcard).getContenido();
+                Alertas.showInfo(contenidoFlashcard, nombreFlashcard + ":");
+            }
+        });
+    }
+
     private void eraseFlashcard(String name) {
         panelFlashcard.getItems().remove(labels.get(name));
         loadFlashcard();

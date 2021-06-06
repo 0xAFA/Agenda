@@ -6,10 +6,26 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 /**
- * Clase que contiene varios cuadros de diálogo y alertas.
+ * Clase auxiliar que contiene varios cuadros de diálogo y alertas.
  * Código adaptado de https://code.makery.ch/blog/javafx-dialogs-official/ por Marco Jakob.
  */
 public class Alertas {
+
+    /**
+     * Muestra un mensaje con un símbolo de información.
+     * @param mensaje Mensaje.
+     * @param titulo Título del mensaje.
+     */
+    public static void showInfo (String mensaje, String titulo) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(titulo);
+        alert.setContentText(mensaje);
+
+        alert.showAndWait();
+
+    }
 
     /**
      * Muestra un mensaje con un símbolo de advertencia.

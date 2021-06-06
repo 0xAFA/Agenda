@@ -4,6 +4,9 @@ import nota.model.INota;
 
 import java.util.ArrayList;
 
+/**
+ * Implementación de un Manager para notas.
+ */
 public class NotaManager implements INotaManager {
 
     private final INotaRepository repo;
@@ -57,7 +60,7 @@ public class NotaManager implements INotaManager {
     }
 
     /**
-     * Guarda todas las notas en el repositorio en un archivo. Sólo funcionará con un NotaFileMana
+     * Guarda todas las notas en el repositorio en un archivo. Sólo funcionará con un NotaFileManager.
      */
     public void saveAll() {
         repo.saveAll();
