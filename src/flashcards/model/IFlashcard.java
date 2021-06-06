@@ -4,6 +4,8 @@ import nota.model.INota;
 
 import java.util.ArrayList;
 
+//Interfaz para las implementaciones de la clase Flashcard (hereda de nota)
+
 public interface IFlashcard extends INota {
 
     String getNombre();

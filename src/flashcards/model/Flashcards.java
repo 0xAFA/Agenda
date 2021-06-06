@@ -10,10 +10,18 @@ public class Flashcards implements IFlashcard{
     private String contenido;//respuesta
     Asignatura asignatura;
 
+    /**
+     * Constructor
+     * @param nombre Titulo de la flashcard
+     * @param contenido Contnido de la flashcard
+     * @param asignatura (opcional) Nombre de la asignatura
+     */
     public Flashcards(String nombre, String contenido, Asignatura ... asignatura) {
         this.nombre = nombre;
         this.contenido=contenido;
     }
+
+    //Getters y Setters
 
     public String getTema() {
         return tema;

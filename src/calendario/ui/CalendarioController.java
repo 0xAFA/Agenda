@@ -24,10 +24,14 @@ import nota.model.INota;
 import nota.model.Nota;
 import receta.repository.IRecetaManager;
 
+//Controlador de la interfaz gráfica de la aplicación de calendario.
+
 public class CalendarioController {
 	
 	private ICalendarioManager manager;
     private HashMap<String, Label> labels = new HashMap<>();
+
+	//Elementos gráficos.
 
     @FXML
     private Button botonVolver;
@@ -115,6 +119,7 @@ public class CalendarioController {
 	    	loadNotas();
 	    	labelError.setText("");;
 	    	texto.setText(tarea);
+
     	}
     	
     }

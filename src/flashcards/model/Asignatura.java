@@ -6,9 +6,15 @@ public class Asignatura {
     int curso;
     int semestre;
 
+    /**
+     * Constructor
+     * @param nombre Nombre de la asignatura
+     */
     public Asignatura(String nombre) {
         this.nombre = nombre;
     }
+
+    //Getters y Setters
 
     public String getNombre() {
         return nombre;

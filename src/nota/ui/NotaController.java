@@ -146,6 +146,10 @@ public class NotaController {
         }
     }
 
+    /**
+     * Guarda las notas en el manager
+     * @param event
+     */
     @FXML
     void saveNotas(ActionEvent event) {
         manager.saveAll();
