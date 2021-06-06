@@ -22,6 +22,10 @@ public class FlashcardManager implements IFlashcardManager{
         return bRes;
     }
 
+    public IFlashcard read(String nombre) {
+        return repo.read(nombre);
+    }
+
     public void remove(IFlashcard flashcard) {
         remove(flashcard.getNombre());
     }

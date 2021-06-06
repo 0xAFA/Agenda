@@ -17,4 +17,8 @@ public interface IFlashcard extends INota {
     void addEtiqueta(String etiqueta);
 
     void removeEtiqueta(String etiqueta);
+
+    void setContenido(String contenido);
+
+    String getContenido();
 }

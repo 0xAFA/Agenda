@@ -10,7 +10,7 @@ public interface IFlashcardRepository {
 
     boolean exists(String nombre);
     boolean create(IFlashcard flashcard);
-    INota read(String nombre);
+    IFlashcard read(String nombre);
     void remove(String nombre);
     ArrayList<IFlashcard> readAll();
     void saveAll();

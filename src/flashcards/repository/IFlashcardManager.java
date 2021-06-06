@@ -12,6 +12,8 @@ public interface IFlashcardManager {
 
     void remove(String titulo);
 
+    IFlashcard read(String titulo);
+
     ArrayList<IFlashcard> readAll();
 
     void saveAll();

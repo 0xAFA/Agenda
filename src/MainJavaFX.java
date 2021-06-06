@@ -170,6 +170,7 @@ public class MainJavaFX extends Application {
             loader.setController(controller);
             Parent root = loader.load();
             scene = new Scene(root);
+            controller.makePanelClickable();
             stage.setTitle("Flashcards");
 
         } catch (Exception e) {

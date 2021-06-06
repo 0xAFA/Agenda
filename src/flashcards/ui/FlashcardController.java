@@ -6,9 +6,11 @@ import flashcards.model.Flashcards;
 import flashcards.model.IFlashcard;
 import flashcards.repository.IFlashcardManager;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -76,17 +78,22 @@ public class FlashcardController {
     }
 
     private void drawFlashcard(IFlashcard flashcard) {
-        /**Label label = new Label();
-        String nombre = flashcard.getNombre();
-        label.setText(nombre);
-        label.setStyle("-fx-font: 22 System;");
-        labels.put(nombre, label);
-        panelFlashcard.getChildren().add(label);**/
         panelFlashcard.getItems().add(flashcard.getNombre());
     }
 
+    public void makePanelClickable() {
+        panelFlashcard.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                String nombreFlashcard = panelFlashcard.getSelectionModel().getSelectedItem();
+                String contenidoFlashcard = manager.read(nombreFlashcard).getContenido();
+                Alertas.showInfo(contenidoFlashcard, nombreFlashcard + ":");
+            }
+        });
+    }
+
     private void eraseFlashcard(String name) {
-        //panelFlashcard.getChildren().remove(labels.get(name));
         panelFlashcard.getItems().remove(labels.get(name));
         loadFlashcard();
     }

@@ -30,7 +30,7 @@ public class FileMethods {
     }
 
     /**
-     * Lee los datos en un archivo y los almacena en un HashMap.
+     * Lee los datos de un archivo y los almacena en un HashMap.
      * @param path Ruta del archivo, relativa al directorio del proyecto.
      * @return HashMap
      */
