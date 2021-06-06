@@ -63,6 +63,10 @@ public class CalendarioController {
     @FXML
     private Button botBorrar;
 
+	/**
+	 * Añade un evento al manager de Calendario
+	 * @param event
+	 */
     @FXML
     void agregar(ActionEvent event) {
     	
@@ -82,6 +86,10 @@ public class CalendarioController {
     	
     }
 
+	/**
+	 * Permite seleccionar un evento para eliminar de la aplicacion
+	 * @param event
+	 */
     @FXML
     void borrar(ActionEvent event) {
     	labelError.setText("");
@@ -101,6 +109,10 @@ public class CalendarioController {
     	}
     }
 
+	/**
+	 * Permite al usuario editar un evento de la aplicaion
+	 * @param event
+	 */
     @FXML
     void editar(ActionEvent event) {
     	labelError.setText("");
@@ -124,6 +136,10 @@ public class CalendarioController {
     	
     }
 
+	/**
+	 * Permite ver el dia de la semana
+	 * @param event
+	 */
     @FXML
     void verDia(ActionEvent event) {
     	String fecha = calendario.getValue().toString();
@@ -146,6 +162,10 @@ public class CalendarioController {
     	loadNotas();
     }
 
+	/**
+	 * Vuelve al menú principal
+	 * @param event
+	 */
     @FXML
     void volver(ActionEvent event) {
 
@@ -153,12 +173,19 @@ public class CalendarioController {
     	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(Scenes.getData().getSceneAgenda());
     }
-    
+	/**
+	 * Asigna un CalendarioManager a la aplicación.
+	 * @param manager CalendarioManager.
+	 */
     public void setManager(ICalendarioManager manager) {
         this.manager = manager;
     }
-    
-    void loadNotas() {
+
+	/**
+	 * Lee los eventos contenidos en el archivo..
+	 * @param event
+	 */
+	void loadNotas() {
     	tareas.getItems().clear();
     	labelError.setText("");
     	boolean encontrado = false;

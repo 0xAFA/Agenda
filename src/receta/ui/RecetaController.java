@@ -2,11 +2,13 @@ package receta.ui;
 
 import common.ui.Alertas;
 import common.ui.Scenes;
+import flashcards.model.IFlashcard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import receta.model.IReceta;
@@ -30,7 +32,7 @@ public class RecetaController {
     private Button buttonExit;
 
     @FXML
-    private VBox panelRecetas;
+    private ListView<String> panelRecetas;
 
     @FXML
     private Button buttonAddReceta;
@@ -48,7 +50,7 @@ public class RecetaController {
     private Button buttonSaveRecetas;
 
     /**
-     * Añade una Receta  de dieta al manager
+     * Añade una Receta al manager
      * @param event
      */
     @FXML
@@ -62,7 +64,7 @@ public class RecetaController {
     }
 
     /**
-     * Cierra la aplicación, solicitando antes al usuario si desea guardar las notas.
+     * Cierra la aplicación, solicitando antes al usuario si desea guardar las recetas.
      * @param event
      */
     @FXML
@@ -82,15 +84,15 @@ public class RecetaController {
     }
     /**
      * Lee las recetas contenidas en el archivo..
-     * @param event
      */
     @FXML
-    void loadRecetas(ActionEvent event) {
+    void loadRecetas() {
+        panelRecetas.getItems().clear();
         ArrayList<IReceta> recetas = manager.readAll();
-        for (IReceta receta : recetas) {
+        for (IReceta receta  : recetas) {
             if(!labels.containsKey(receta.getNombre()))
                 drawReceta(receta);
-            }
+        }
     }
     /**
      * Dibuja las recetas en pantalla.
@@ -98,21 +100,16 @@ public class RecetaController {
      */
     @FXML
     private void drawReceta(IReceta receta) {
-        Label label = new Label();
-        String nombre = receta.getNombre();
-        label.setText(nombre);
-        label.setStyle("-fx-font: 22 System;");
-        labels.put(nombre, label);
-        panelRecetas.getChildren().add(label);
+        panelRecetas.getItems().add(receta.getNombre());
     }
     /**
      * Borra una receta de la pantalla.
-     * @param name Nombre de la nota.
+     * @param name Nombre de la receta.
      */
     @FXML
     private void eraseReceta(String name) {
-        panelRecetas.getChildren().remove(labels.get(name));
-    }
+        panelRecetas.getItems().remove(labels.get(name));
+        loadRecetas();    }
 
     /**
      * Permite al usuario seleccionar una receta para eliminar de la aplicacion.

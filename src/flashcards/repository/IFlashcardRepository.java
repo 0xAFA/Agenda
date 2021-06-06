@@ -5,7 +5,9 @@ import nota.model.INota;
 
 
 import java.util.ArrayList;
-
+/**
+ * Interfaz para las implementaciones del repositorio de flashcards.
+ */
 public interface IFlashcardRepository {
 
     boolean exists(String nombre);

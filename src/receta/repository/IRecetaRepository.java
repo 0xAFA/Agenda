@@ -4,7 +4,9 @@ import nota.model.INota;
 import receta.model.IReceta;
 
 import java.util.ArrayList;
-
+/**
+ * Interfaz para las implementaciones del repositorio de Receta.
+ */
 public interface IRecetaRepository {
 
     boolean exists(String nombre);
