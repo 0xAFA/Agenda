@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import nota.model.INota;
 import receta.model.IReceta;
 import receta.model.Receta;
 import receta.model.RecetaDieta;
@@ -24,11 +26,12 @@ public class RecetaController {
     private HashMap<String, Label> labels = new HashMap<>();
 
     //Elementos gráficos.
-    @FXML
-    private Button buttonExit;
 
     @FXML
-    private VBox panelRecetas;
+    private ListView<String> panelRecetas;
+
+    @FXML
+    private Button buttonExit;
 
     @FXML
     private Button buttonAddReceta;
@@ -39,11 +42,6 @@ public class RecetaController {
     @FXML
     private Button buttonReturnToMenu;
 
-    @FXML
-    private Button buttonLoadRecetas;
-
-    @FXML
-    private Button buttonSaveRecetas;
     /**
      * Añade una receta al Manager.
      * @param event
@@ -75,7 +73,8 @@ public class RecetaController {
      * Lee las recetas contenidas en el archivo.
      */
     @FXML
-    void loadRecetas(ActionEvent event) {
+    void loadRecetas() {
+        panelRecetas.getItems().clear();
         ArrayList<IReceta> recetas = manager.readAll();
         for (IReceta receta : recetas) {
             if(!labels.containsKey(receta.getNombre()))
@@ -87,12 +86,7 @@ public class RecetaController {
      * @param receta Receta que se va a dibujar.
      */
     private void drawReceta(IReceta receta) {
-        Label label = new Label();
-        String nombre = receta.getNombre();
-        label.setText(nombre);
-        label.setStyle("-fx-font: 22 System;");
-        labels.put(nombre, label);
-        panelRecetas.getChildren().add(label);
+        panelRecetas.getItems().add(receta.getNombre());
     }
 
     /**
@@ -100,8 +94,8 @@ public class RecetaController {
      * @param name Nombre de la receta.
      */
     private void eraseReceta(String name) {
-        panelRecetas.getChildren().remove(labels.get(name));
-    }
+        panelRecetas.getItems().remove(labels.get(name));
+        loadRecetas();    }
     /**
      * Permite al usuario seleccionar una receta para eliminar de la aplicación.
      * @param event
