@@ -42,6 +42,9 @@ public class RecetaController {
     @FXML
     private Button buttonReturnToMenu;
 
+    @FXML
+    private Button buttonLoadRecetas;
+
     /**
      * Añade una receta al Manager.
      * @param event

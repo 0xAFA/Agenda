@@ -60,7 +60,8 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-               </left><center>
+               </left>
+               <center>
                <Button fx:id="buttonLoadFlashcard" maxHeight="25.0" maxWidth="75.0" mnemonicParsing="false" onAction="#loadFlashcard" prefHeight="25.0" style="-fx-background-color: #2f375b;" text="Cargar" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                   <font>
                      <Font size="14.0" />
@@ -68,7 +69,7 @@
                      <BorderPane.margin>
                         <Insets top="50.0" />
                      </BorderPane.margin></Button>
-            </center>
+               </center>
                <right>
                   <Button fx:id="buttonRemoveFlashcard" maxHeight="25.0" maxWidth="75.0" mnemonicParsing="false" onAction="#removeFlashcard" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #2f375b;" text="Borrar" textFill="WHITE" BorderPane.alignment="CENTER">
                      <font>
