@@ -70,18 +70,6 @@
                               </Button>
                            </center>
                         </BorderPane>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                           <center>
-                              <Button fx:id="buttonGoToTareas" maxHeight="30.0" maxWidth="100.0" mnemonicParsing="false" onAction="#goToTareas" prefHeight="25.0" style="-fx-background-color: #2f375b;" text="Tareas" textFill="WHITE" BorderPane.alignment="CENTER">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <BorderPane.margin>
-                                    <Insets bottom="200.0" />
-                                 </BorderPane.margin>
-                              </Button>
-                           </center>
-                        </BorderPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                            <center>
                               <Button fx:id="buttonGoToRecetas" maxHeight="30.0" maxWidth="100.0" mnemonicParsing="false" onAction="#goToRecetas" prefHeight="25.0" style="-fx-background-color: #2f375b;" text="Recetas" textFill="WHITE" BorderPane.alignment="CENTER">
