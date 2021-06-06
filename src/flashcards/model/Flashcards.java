@@ -10,8 +10,9 @@ public class Flashcards implements IFlashcard{
     private String contenido;//respuesta
     Asignatura asignatura;
 
-    public Flashcards(String nombre, Asignatura ... asignatura) {
+    public Flashcards(String nombre, String contenido, Asignatura ... asignatura) {
         this.nombre = nombre;
+        this.contenido=contenido;
     }
 
     public String getTema() {

@@ -1,7 +1,6 @@
 package flashcards.repository;
 
 import flashcards.model.IFlashcard;
-import receta.model.IReceta;
 
 import java.util.ArrayList;
 

@@ -44,7 +44,7 @@ public class Main {
         IFlashcardRepository repo1 = new FlashcardFileRepository();
         IFlashcardManager manager1 = new FlashcardManager(repo1);
         Asignatura Fisica=new Asignatura("Fisica");
-        Flashcards flashcard1 = new Flashcards("Definicion de atomo",Fisica);
+       /** Flashcards flashcard1 = new Flashcards("Definicion de atomo",Fisica);
         flashcard1.setContenido("El átomo es la unidad constituyente más pequeña de la " +
                                 "materia que tiene las propiedades de un elemento químico. ");
         flashcard1.setTema("Tema 1: Conceptos basicos");
@@ -58,7 +58,7 @@ public class Main {
             System.out.println(a.getTema());
             System.out.println(a.getNombre());
             System.out.println(a.getContenido());
-        }
+        }**/
 
     }
 

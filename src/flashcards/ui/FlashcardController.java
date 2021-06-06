@@ -2,16 +2,13 @@ package flashcards.ui;
 
 import common.ui.Alertas;
 import common.ui.Scenes;
-import flashcards.model.Asignatura;
 import flashcards.model.Flashcards;
 import flashcards.model.IFlashcard;
 import flashcards.repository.IFlashcardManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -26,7 +23,7 @@ public class FlashcardController {
     private Button buttonExit;
 
     @FXML
-    private VBox panelFlashcard;
+    private ListView<String> panelFlashcard;
 
     @FXML
     private Button buttonAddFlashcard;
@@ -42,12 +39,15 @@ public class FlashcardController {
 
     @FXML
     private Button buttonSaveFlashcard;
+
     @FXML
     void addFlashcard(ActionEvent event) {
 
-        String nombre = Alertas.showInputDialog("Introduce el titulo de la flashcard:", "Crear flashcard", "");
-        Flashcards flashcard = new Flashcards(nombre);
+        String nombre = Alertas.showInputDialog("Introduce el titulo de la flashcard: ", "Flashcard", "");
+        String contenido= Alertas.showInputDialog("Introduce el contenido de la flashcard:", "Contenido", "");
+        Flashcards flashcard = new Flashcards(nombre,contenido);
         flashcard.setNombre(nombre);
+        flashcard.setContenido(contenido);
         if(manager.create(flashcard)) {
             drawFlashcard(flashcard);
         }
@@ -66,7 +66,8 @@ public class FlashcardController {
     }
 
     @FXML
-    void loadFlashcard(ActionEvent event) {
+    void loadFlashcard(/*ActionEvent event*/) {
+        panelFlashcard.getItems().clear();
         ArrayList<IFlashcard> flashcards = manager.readAll();
         for (IFlashcard flashcard  : flashcards) {
             if(!labels.containsKey(flashcard.getNombre()))
@@ -75,16 +76,19 @@ public class FlashcardController {
     }
 
     private void drawFlashcard(IFlashcard flashcard) {
-        Label label = new Label();
+        /**Label label = new Label();
         String nombre = flashcard.getNombre();
         label.setText(nombre);
         label.setStyle("-fx-font: 22 System;");
         labels.put(nombre, label);
-        panelFlashcard.getChildren().add(label);
+        panelFlashcard.getChildren().add(label);**/
+        panelFlashcard.getItems().add(flashcard.getNombre());
     }
 
     private void eraseFlashcard(String name) {
-        panelFlashcard.getChildren().remove(labels.get(name));
+        //panelFlashcard.getChildren().remove(labels.get(name));
+        panelFlashcard.getItems().remove(labels.get(name));
+        loadFlashcard();
     }
 
     @FXML
