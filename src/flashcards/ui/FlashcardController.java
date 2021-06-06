@@ -16,10 +16,14 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FlashcardController {
+//Controlador de la interfaz gráfica de la aplicación de flashcards.
 
+public class FlashcardController {
+    Slider slider = new Slider();
     private IFlashcardManager manager;
     private HashMap<String, Label> labels = new HashMap<>();
+
+    //Elementos gráficos.
 
     @FXML
     private Button buttonExit;
@@ -76,7 +80,20 @@ public class FlashcardController {
                 drawFlashcard(flashcard);
         }
     }
-
+    @FXML
+    void verFlashcard() {
+        panelFlashcard.getItems().clear();
+        ArrayList<IFlashcard> flashcards = manager.readAll();
+        for (IFlashcard flashcard  : flashcards) {
+            if(!labels.containsKey(flashcard.getNombre()))
+                slider.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        Alertas.showInputDialog("Respuesta",flashcard.getNombre(),"");
+                    }
+                });
+        }
+    }
     private void drawFlashcard(IFlashcard flashcard) {
         panelFlashcard.getItems().add(flashcard.getNombre());
     }
@@ -105,10 +122,8 @@ public class FlashcardController {
         for (IFlashcard flashcard : manager.readAll()) {
             allNotes.add(flashcard.getNombre());
         }
-
         String nombre = Alertas.showChoiceDialog(allNotes, "Selecciona la flashcard que quieres borrar",
                                                              "Eliminar flashcard");
-
         manager.remove(nombre);
         eraseFlashcard(nombre);
     }

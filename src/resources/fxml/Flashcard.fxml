@@ -43,7 +43,7 @@
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <center>
-                  <ListView fx:id="panelFlashcard" maxHeight="300.0" maxWidth="375.0" prefHeight="100.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                  <ListView fx:id="panelFlashcard" maxHeight="300.0" maxWidth="375.0" onMouseClicked="#verFlashcard" prefHeight="100.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets bottom="10.0" />
                      </BorderPane.margin>

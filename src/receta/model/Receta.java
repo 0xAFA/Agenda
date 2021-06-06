@@ -13,8 +13,10 @@ public abstract class Receta implements IReceta{
     ArrayList<String> etiquetas = new ArrayList<>(); //Viene de INota
     protected long calorias;
 
-
-
+    /**
+     *Constructor
+     * @param calorias Calorias de la receta
+     */
     public Receta(long calorias) {
 
         this.calorias = calorias;
@@ -22,6 +24,7 @@ public abstract class Receta implements IReceta{
 
     public abstract long calorias();
 
+    //Getters y Setters
 
     @Override
 

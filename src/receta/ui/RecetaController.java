@@ -17,10 +17,14 @@ import receta.repository.IRecetaManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//Controlador de la interfaz gráfica de la aplicación de recetas.
+
 public class RecetaController {
 
     private IRecetaManager manager;
     private HashMap<String, Label> labels = new HashMap<>();
+
+    //Elementos gráficos.
 
     @FXML
     private Button buttonExit;
@@ -43,6 +47,10 @@ public class RecetaController {
     @FXML
     private Button buttonSaveRecetas;
 
+    /**
+     * Añade una Receta  de dieta al manager
+     * @param event
+     */
     @FXML
     void addRecetaDieta(ActionEvent event) {
         String nombre = Alertas.showInputDialog("Introduce la receta:", "Introducir receta", "");
@@ -53,18 +61,29 @@ public class RecetaController {
         }
     }
 
+    /**
+     * Cierra la aplicación, solicitando antes al usuario si desea guardar las notas.
+     * @param event
+     */
     @FXML
     void exit(ActionEvent event) {
         askToSave();
         System.exit(0);
     }
 
+    /**
+     * Pregunta al usuario si quiere guardar las recetas antes de salir.
+     */
+    @FXML
     private void askToSave() {
         if(Alertas.showYesNoDialog("¿Desea guardar las recetas?", "Guardar recetas")) {
             saveRecetas(new ActionEvent());
         }
     }
-
+    /**
+     * Lee las recetas contenidas en el archivo..
+     * @param event
+     */
     @FXML
     void loadRecetas(ActionEvent event) {
         ArrayList<IReceta> recetas = manager.readAll();
@@ -73,7 +92,11 @@ public class RecetaController {
                 drawReceta(receta);
             }
     }
-
+    /**
+     * Dibuja las recetas en pantalla.
+     * @param receta Receta que se va a dibujar.
+     */
+    @FXML
     private void drawReceta(IReceta receta) {
         Label label = new Label();
         String nombre = receta.getNombre();
@@ -82,11 +105,19 @@ public class RecetaController {
         labels.put(nombre, label);
         panelRecetas.getChildren().add(label);
     }
-
+    /**
+     * Borra una receta de la pantalla.
+     * @param name Nombre de la nota.
+     */
+    @FXML
     private void eraseReceta(String name) {
         panelRecetas.getChildren().remove(labels.get(name));
     }
 
+    /**
+     * Permite al usuario seleccionar una receta para eliminar de la aplicacion.
+     * @param event
+     */
     @FXML
     void removeReceta(ActionEvent event) {
         ArrayList<String> allNotes = new ArrayList<>();
@@ -100,7 +131,10 @@ public class RecetaController {
         manager.remove(nombre);
         eraseReceta(nombre);
     }
-
+    /**
+     * Vuelve al menú principal, preguntando antes al usuario si desea guardar las recetas.
+     * @param event
+     */
     @FXML
     void returnToMenu(ActionEvent event) {
 
@@ -110,11 +144,18 @@ public class RecetaController {
         stage.setScene(Scenes.getData().getSceneAgenda());
     }
 
+    /**
+     * Guarda las recetas en el manager
+     * @param event
+     */
     @FXML
     void saveRecetas(ActionEvent event) {
         manager.saveAll();
     }
-
+    /**
+     * Asigna un IRecetaManager a la aplicación.
+     * @param manager RecetaManager.
+     */
     public void setManager(IRecetaManager manager) {
         this.manager = manager;
     }

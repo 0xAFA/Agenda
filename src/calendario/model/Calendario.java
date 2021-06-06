@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calendario implements ICalendario{
-	
+
+	//Código para la serialización
 	 private static final long serialVersionUID = 2L;
 	
 	private String texto;
 	private String fecha;
 	private String nombre;
+
+	//Getters y Setters
 	
 	public String getTexto() {
 		return texto;
@@ -27,6 +30,11 @@ public class Calendario implements ICalendario{
 		this.fecha = fecha;
 	}
 
+	/**
+	 * Constructor
+	 * @param texto Nombre del evento
+	 * @param fecha Fecha del evento
+	 */
 	public Calendario(String texto, String fecha) {
 		this.texto = texto;
 		this.fecha = fecha;
