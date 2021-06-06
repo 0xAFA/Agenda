@@ -45,7 +45,10 @@ public class FlashcardController {
 
     @FXML
     private Button buttonSaveFlashcard;
-
+    /**
+     * Añade una flashcard al Manager.
+     * @param event
+     */
     @FXML
     void addFlashcard(ActionEvent event) {
 
@@ -59,20 +62,19 @@ public class FlashcardController {
         }
     }
 
-    @FXML
-    void exit(ActionEvent event) {
-        askToSave();
-        System.exit(0);
-    }
-
+    /**
+     * Pregunta al usuario si quiere guardar las flashcards antes de salir.
+     */
     private void askToSave() {
         if(Alertas.showYesNoDialog("¿Desea guardar las flashcards?", "Guardar flashcards")) {
             saveFlashcard(new ActionEvent());
         }
     }
-
+    /**
+     * Lee las flashcards contenidas en el archivo.
+     */
     @FXML
-    void loadFlashcard(/*ActionEvent event*/) {
+    void loadFlashcard() {
         panelFlashcard.getItems().clear();
         ArrayList<IFlashcard> flashcards = manager.readAll();
         for (IFlashcard flashcard  : flashcards) {
@@ -80,6 +82,10 @@ public class FlashcardController {
                 drawFlashcard(flashcard);
         }
     }
+
+    /**
+     * Muestra el contenido de la flashcard seleccionada
+     */
     @FXML
     void verFlashcard() {
         panelFlashcard.getItems().clear();
@@ -93,11 +99,17 @@ public class FlashcardController {
                     }
                 });
         }
-    }
+    }/**
+     * Dibuja las flashcards en pantalla.
+     * @param flashcard Flashcard que se va a dibujar.
+     */
     private void drawFlashcard(IFlashcard flashcard) {
         panelFlashcard.getItems().add(flashcard.getNombre());
     }
 
+    /**
+     * Permite acceder a la flashcard seleccionada para ver su contenido.
+     */
     public void makePanelClickable() {
         panelFlashcard.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -110,11 +122,18 @@ public class FlashcardController {
         });
     }
 
+    /**
+     * Borra una flashcard de la pantalla.
+     * @param name Nombre de la flashcard.
+     */
     private void eraseFlashcard(String name) {
         panelFlashcard.getItems().remove(labels.get(name));
         loadFlashcard();
     }
-
+    /**
+     * Permite al usuario seleccionar una flashcard para eliminar de la aplicación.
+     * @param event
+     */
     @FXML
     void removeFlashcard(ActionEvent event) {
         ArrayList<String> allNotes = new ArrayList<>();
@@ -127,7 +146,10 @@ public class FlashcardController {
         manager.remove(nombre);
         eraseFlashcard(nombre);
     }
-
+    /**
+     * Vuelve al menú principal, preguntando antes al usuario si desea guardar las flashcards.
+     * @param event
+     */
     @FXML
     void returnToMenu(ActionEvent event) {
 
@@ -136,12 +158,18 @@ public class FlashcardController {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(Scenes.getData().getSceneAgenda());
     }
-
+    /**
+     * Guarda las flashcards en el manager
+     * @param event
+     */
     @FXML
     void saveFlashcard(ActionEvent event) {
         manager.saveAll();
     }
-
+    /**
+     * Asigna un FlashcardManager a la aplicación.
+     * @param manager FlashcardManager.
+     */
     public void setManager(IFlashcardManager manager) {
         this.manager = manager;
     }
